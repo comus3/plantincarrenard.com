@@ -103,3 +103,86 @@ a:hover {
     transform: translateY(-100%);
   }
 }
+
+/* forum styles */
+/* Forum section */
+.forum {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.forum-container {
+  width: 640px;
+  height: 480px;
+  background-image: url('assets/window.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+/* Forum header (top unused space in the image) */
+.forum-header {
+  height: 55px;
+  width: 100%;
+  /* Leave this empty for now; it's just the non-scrollable top part of the image */
+}
+
+/* Forum content (scrollable message area) */
+.forum-content {
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: "Tahoma", sans-serif;
+  font-size: 14px;
+  color: black;
+  background-color: white; /* Matches Windows 2000 forum look */
+}
+
+/* Style individual messages */
+.message {
+  margin-bottom: 1rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 14px;
+}
+
+/* Username and time styles */
+.username {
+  font-weight: bold;
+  color: #000080; /* Dark blue for usernames */
+  margin: 0;
+}
+
+.time {
+  font-size: 12px;
+  color: #808080; /* Gray for time */
+  margin: 0;
+}
+
+.text {
+  margin: 5px 0 0;
+  color: #000; /* Black for text */
+}
+
+/* Custom scrollbar */
+.forum-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forum-content::-webkit-scrollbar-thumb {
+  background: #00ff00; /* Matches Matrix green */
+  border-radius: 4px;
+}
+
+.forum-content::-webkit-scrollbar-track {
+  background: #000; /* Matches Matrix black */
+}
