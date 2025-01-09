@@ -121,6 +121,7 @@ a:hover {
   background-position: center;
   position: relative;
   overflow: hidden;
+  margin-bottom: 4rem;
 }
 
 /* Forum header (top unused space in the image) */
