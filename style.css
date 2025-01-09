@@ -1,50 +1,105 @@
+/* General styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    text-align: center;
-    background: url('assets/background.png') repeat;
-    background-size: cover;
+  background-color: black;
+  color: #00ff00;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Title at top left */
+.title h1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Main content (terminal-like) */
+.terminal {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+p, ul {
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+.highlight {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+a {
+  color: #00ff00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Background images (parallax effect) */
+.background-images {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-images .image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+}
+
+.background-images .image:nth-child(1) {
+  background-image: url('assets/background1.jpg'); /* Replace with your image */
+  animation: scroll 20s linear infinite;
+}
+
+.background-images .image:nth-child(2) {
+  background-image: url('assets/background2.jpg'); /* Replace with your image */
+  animation: scroll 30s linear infinite;
+}
+
+.background-images .image:nth-child(3) {
+  background-image: url('assets/background3.jpg'); /* Replace with your image */
+  animation: scroll 40s linear infinite;
+}
+
+/* Background scrolling animation */
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
   }
-  
-  .container {
-    padding: 50px 20px;
+  100% {
+    transform: translateY(-100%);
   }
-  
-  h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-shadow: 2px 2px #000;
-  }
-  
-  .banner {
-    font-size: 2rem;
-    color: yellow;
-    background-color: #000;
-    display: inline-block;
-    padding: 10px;
-    margin: 20px 0;
-    border: 3px dashed red;
-  }
-  
-  .construction-gif {
-    width: 300px;
-    margin-top: 20px;
-  }
-  
-  .github-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px #000;
-  }
-  
-  .github-link:hover {
-    background-color: #555;
-  }
-  
+}
