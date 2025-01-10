@@ -34,7 +34,7 @@ function generateHelpMessage() {
     - 'flip': Flip a coin (heads or tails).
     - 'echo <message>': Repeat the text you type.
     - 'rand': Generate a random number in weird units.
-    - 'weather': Get a funny weather forecast with some NPC dialogue.
+    - 'weather': Get a weather forecast.
     - 'magic8': Ask the Magic 8 Ball a question.
     - 'help': Display this help message.
   `;
