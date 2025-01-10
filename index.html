@@ -152,7 +152,15 @@
     </div>
   </section>
 
-
+  <script>
+    // Ajout de l'événement pour écouter les touches clavier
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 't') {
+        console.log('Ouverture du terminal');
+        window.location.href = 'terminal.html';
+      }
+    });
+  </script>
   <script src="script.js"></script>
 
 </body>
