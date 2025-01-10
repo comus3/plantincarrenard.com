@@ -19,6 +19,7 @@
     </header>
     <main>
       <section class="about">
+
         <p>
           Master’s student in Computer Science at ECAM <br>
           <span class="highlight">+32 485 13 63 82</span> |
@@ -104,6 +105,11 @@
           <p class="text">Wsh ton truc là, ça sent le geek en pyjama qui mange des chips devant Sublime Text.</p>
         </div>
         <div class="message">
+          <p class="username">ROOT</p>
+          <p class="time">2025-01-10 14:19</p>
+          <p class="text">Hola aventurier! Appuies sur t pour une super surprise.</p>
+        </div>
+        <div class="message">
           <p class="username">JeanFluo</p>
           <p class="time">2025-01-10 14:19</p>
           <p class="text">Mec y’a plus de vert ici que dans un champ de canabis, ralentis un peu bg.</p>
@@ -152,7 +158,20 @@
     </div>
   </section>
 
+  <div class="terminal-hint">
+    Type <strong>'T'</strong> for a secret surprise!
+    <div class="terminal-hint-tooltip">Try it out! It’s fun!</div>
+  </div>
 
+  <script>
+    // Ajout de l'événement pour écouter les touches clavier
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 't') {
+        console.log('Ouverture du terminal');
+        window.location.href = 'terminal.html';
+      }
+    });
+  </script>
   <script src="script.js"></script>
 
 </body>

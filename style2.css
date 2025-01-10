@@ -1,0 +1,96 @@
+/* Fond général et police */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Gris foncé pour l'arrière-plan global */
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  /* Style du Terminal */
+  .terminal {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    padding: 0;
+    border: 2px solid #8a8a8a;
+    border-top: 5px solid #8a8a8a; /* Bordure supérieure plus épaisse */
+    border-radius: 5px;
+    background-color: #1a1a1a; /* Gris très foncé */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Titre du Terminal */
+  .terminal-header {
+    background-color: #1a1a1a;
+    color: #8a8a8a;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  
+  .terminal-title {
+    text-transform: uppercase;
+  }
+  
+  /* Zone de texte du terminal (où l'output et les commandes s'affichent) */
+  .terminal-body {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    color: #00ff00; /* Vert terminal */
+    background-color: #121212; /* Fond du terminal */
+    font-size: 16px;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+  }
+  
+  .terminal-output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Zone d'entrée et curseur clignotant */
+  .terminal-input {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .prompt {
+    color: #8a8a8a; /* Gris clair pour l'invite */
+    margin-right: 10px;
+  }
+  
+  .input {
+    background-color: #121212;
+    border: none;
+    color: #00ff00;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: 1px;
+    caret-color: #00ff00; /* Curseur vert */
+  }
+  
+  /* Animation du curseur clignotant */
+  .terminal-input .input:focus {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  /* Ajout de l'effet de glow vert sur les lettres */
+  .terminal-output, .input {
+    text-shadow: 0 0 1px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+  
