@@ -186,3 +186,47 @@ a:hover {
 .forum-content::-webkit-scrollbar-track {
   background: #000; /* Matches Matrix black */
 }
+
+
+
+
+
+    /* Floating hint in the content */
+    .terminal-hint {
+      display: inline-block;
+      background-color: #333;
+      color: #00ff00;
+      padding: 5px 10px;
+      font-family: 'Courier New', monospace;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Hover effect */
+    .terminal-hint:hover {
+      opacity: 1;
+      background-color: #0f7b00;
+    }
+
+    /* Tooltip */
+    .terminal-hint-tooltip {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+      font-size: 12px;
+      border-radius: 3px;
+      z-index: 10;
+    }
+
+    .terminal-hint:hover .terminal-hint-tooltip {
+      display: block;
+    }
+
+    /* Styling for the section */
+    .about, .projects, .skills {
+      position: relative;

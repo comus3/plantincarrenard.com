@@ -1,4 +1,5 @@
 let jokeElements = {};  // This will hold the joke elements from the JSON file
+let weatherAttempts = 0;  // Track how many times the user has called 'weather'
 
 // Function to fetch the jokes from the JSON file
 async function fetchJokes() {
@@ -24,6 +25,71 @@ function generateJoke() {
   return `${subject} ${context} ${action} and ${reaction} ${conclusion}`;
 }
 
+// Function to generate the help message
+function generateHelpMessage() {
+  return `
+    Available commands:
+    - 'joke': Get a random joke.
+    - 'fortune': Get a random fortune or motivational quote.
+    - 'flip': Flip a coin (heads or tails).
+    - 'echo <message>': Repeat the text you type.
+    - 'rand': Generate a random number in weird units.
+    - 'weather': Get a funny weather forecast with some NPC dialogue.
+    - 'magic8': Ask the Magic 8 Ball a question.
+    - 'help': Display this help message.
+  `;
+}
+
+// Function to generate a random number in weird units
+function generateRandomNumber() {
+  const units = [
+    "quarks",
+    "spaghetti noodles",
+    "gallons of water",
+    "centipedes",
+    "pizza slices",
+    "neutron stars",
+    "moons of Jupiter",
+    "sand grains",
+    "toaster strudels"
+  ];
+  const number = Math.floor(Math.random() * 1000);
+  const unit = units[Math.floor(Math.random() * units.length)];
+  return `${number} ${unit}`;
+}
+
+// Function for weather with NPC dialogue
+function generateWeather() {
+  weatherAttempts++;
+  if (weatherAttempts === 1) {
+    return "Uh, bro... I don’t know... The weather's probably fine. Go outside.";
+  }
+  
+  // NPC continues talking after the second attempt
+  const rants = [
+    "Seriously? You're asking me about the weather again? You know I don't have a meteorology degree, right?",
+    "Look, I just checked the weather, and it said... 'Don't ask me!' Is that clear enough for you?",
+    "Dude, please stop asking. I'm not a weather app, I’m just a terminal. Go ask a cloud or something.",
+    "Alright, alright, I get it. It’s probably raining spaghetti out there. Happy now?",
+    "Can you hear the wind outside? Yeah, that’s about all I can tell you. The weather? Who knows. Who even cares?"
+  ];
+
+  return rants[weatherAttempts % rants.length];
+}
+
+// Function for Magic 8 Ball
+function magic8Ball() {
+  const answers = [
+    "Yes.",
+    "No.",
+    "Maybe.",
+    "Ask again later.",
+    "Definitely not.",
+    "It is certain."
+  ];
+  return answers[Math.floor(Math.random() * answers.length)];
+}
+
 // Handle user input in the terminal
 const inputField = document.getElementById('input');
 const outputDiv = document.getElementById('output');
@@ -43,8 +109,45 @@ inputField.addEventListener('keydown', function (e) {
     if (userInput === 'joke') {
       const joke = generateJoke();
       outputDiv.innerHTML += `<div>> ${joke}</div>`;
-    } else {
-      outputDiv.innerHTML += `<div>> Command not recognized. Type 'joke' to hear a joke.</div>`;
+    } 
+    // Check if the command is "help" and respond
+    else if (userInput === 'help') {
+      const helpMessage = generateHelpMessage();
+      outputDiv.innerHTML += `<div>> ${helpMessage}</div>`;
+    }
+    // Check if the command is "fortune" and respond
+    else if (userInput === 'fortune') {
+      const fortune = "You will have a pleasant surprise today!";
+      outputDiv.innerHTML += `<div>> ${fortune}</div>`;
+    }
+    // Check if the command is "flip" and respond
+    else if (userInput === 'flip') {
+      const coinFlip = Math.random() < 0.5 ? "Heads" : "Tails";
+      outputDiv.innerHTML += `<div>> ${coinFlip}</div>`;
+    }
+    // Check if the command is "echo" and repeat the user's message
+    else if (userInput.startsWith('echo ')) {
+      const message = userInput.slice(5);  // Remove 'echo ' from the input
+      outputDiv.innerHTML += `<div>> ${message}</div>`;
+    }
+    // Check if the command is "rand" and respond with a random number in weird units
+    else if (userInput === 'rand') {
+      const randomNumber = generateRandomNumber();
+      outputDiv.innerHTML += `<div>> ${randomNumber}</div>`;
+    }
+    // Check if the command is "weather" and respond with a funny rant
+    else if (userInput === 'weather') {
+      const weatherResponse = generateWeather();
+      outputDiv.innerHTML += `<div>> ${weatherResponse}</div>`;
+    }
+    // Check if the command is "magic8" and respond
+    else if (userInput === 'magic8') {
+      const magicAnswer = magic8Ball();
+      outputDiv.innerHTML += `<div>> ${magicAnswer}</div>`;
+    } 
+    // Handle unknown commands
+    else {
+      outputDiv.innerHTML += `<div>> Command not recognized. Type 'help' for a list of commands.</div>`;
     }
 
     // Clear the input field for the next command
