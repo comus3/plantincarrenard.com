@@ -11,10 +11,31 @@ body {
 /* Title at top left */
 .title h1 {
   position: absolute;
-  top: -30px;
+  top: -5px;
   left: 0px;
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #0f0; /* Matrix green color */
+  font-family: monospace;
+  display: flex;
+}
+
+.title h1 span {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+/* Fading out effect */
+.fading {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Adjust spacing for smooth transition when a character disappears */
+.title h1 {
+  transition: letter-spacing 0.3s ease;
 }
 
 /* Main content (terminal-like) */
@@ -58,6 +79,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 /* Background images (parallax effect) */
 .background-images {
