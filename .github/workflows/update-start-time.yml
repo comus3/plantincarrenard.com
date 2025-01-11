@@ -27,4 +27,5 @@ jobs:
         git config user.email "actions@github.com"
         git add script.js
         git commit -m "Update startTime to $current_time"
-        git push
+        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+
