@@ -1,0 +1,30 @@
+name: Update Trigram Daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+  workflow_dispatch:  # Allows manual trigger of the workflow
+
+jobs:
+  update_trigram:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set the trigram based on the day
+      run: |
+        # Get the current day of the week (e.g., MON, TUE, etc.)
+        DAY_OF_WEEK=$(date +%a)  # This will return 3-letter day abbreviation (e.g., MON)
+
+        # Update the trigram in the HTML file (e.g., change LOL to the correct day)
+        sed -i "s/<span class=\"trigram\">[A-Za-z]*<\/span>/<span class=\"trigram\">$DAY_OF_WEEK<\/span>/" index.html
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add index.html
+        git commit -m "trigram_daily_update"
+        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
