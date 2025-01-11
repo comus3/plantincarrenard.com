@@ -20,11 +20,6 @@ body {
   position: relative; /* For positioning child elements */
 }
 
-.json-container {
-  display: flex;
-  align-items: center;
-}
-
 .banner-left {
   display: flex;
   align-items: center;
@@ -38,32 +33,6 @@ body {
   margin-right: 20px;
   text-transform: uppercase;
 }
-
-.json-style {
-  color: #00ff00;
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #333; /* Gray background for the JSON box */
-  padding: 5px 10px;
-  border-radius: 5px;
-  max-width: 220px; /* Set max width to fit the banner */
-  font-size: clamp(0.5rem, 2vw, 0.6rem); /* Font size dynamically adjusts */
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  height: 60px;  /* Set fixed height for the JSON box */
-  overflow: hidden;  /* Prevent text from overflowing */
-  display: flex;
-  align-items: center; /* Vertically center the text inside */
-}
-
-.json-style span.key {
-  color: red;
-}
-
-.json-style span.value {
-  color: white;
-}
-
 
 .banner-right {
   display: flex;
@@ -84,19 +53,6 @@ body {
 /* Title adjustments to avoid overlap */
 .title h1 {
   margin-top: 80px; /* Adjusted space for the title */
-}
-
-/* JSON Syntax Coloring */
-.json-style pre {
-  color: #00ff00;  /* Default color for other parts */
-}
-
-.json-style pre span.key {
-  color: red;  /* JSON keys in red */
-}
-
-.json-style pre span.value {
-  color: white;  /* JSON values in white */
 }
 
 
