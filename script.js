@@ -87,3 +87,5 @@ function transformText() {
   
 // Start the animation
 writeTextMatrixStyle();
+
+
