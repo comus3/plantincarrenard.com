@@ -23,6 +23,7 @@ body {
 .banner-left {
   display: flex;
   align-items: center;
+  gap: 20px; /* Add space between the trigram and the time difference */
 }
 
 .trigram {
@@ -32,6 +33,55 @@ body {
   text-shadow: 0 0 10px #00ff00;
   margin-right: 20px;
   text-transform: uppercase;
+}
+
+.gray-box {
+  background-color: #333;
+  padding: 5px 10px; /* Reduced padding to fit within the 60px height */
+  border-radius: 8px;
+  height: 40px; /* Fixed height */
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  gap: 5px;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 0.9rem; /* Adjusted font size to fit */
+}
+
+.switch {
+  display: flex;
+  gap: 5px;
+}
+
+.red, .green {
+  width: 10px;  /* Adjusted size for dots */
+  height: 10px; /* Adjusted size for dots */
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.value {
+  color: #fffa;
+  font-size: 0.9rem; /* Adjusted font size for better fit */
 }
 
 .banner-right {
