@@ -226,7 +226,3 @@ a:hover {
     .terminal-hint:hover .terminal-hint-tooltip {
       display: block;
     }
-
-    /* Styling for the section */
-    .about, .projects, .skills {
-      position: relative;

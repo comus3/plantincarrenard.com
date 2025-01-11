@@ -40,6 +40,41 @@ function generateHelpMessage() {
   `;
 }
 
+function generateFortune() {
+  const beginnings = [
+    "Your day will start with",
+    "Prepare yourself for",
+    "Brace for impact when you encounter",
+    "Destiny awaits, bringing you",
+    "You’ll accidentally become famous because of",
+    "A life-changing moment will involve",
+    "Tragedy strikes when you meet",
+    "Unexpected joy comes from",
+    "You’ll cry hysterically over",
+    "Your future hinges on"
+  ];
+
+  const endings = [
+    "a seagull stealing your last slice of pizza while staring into your soul.",
+    "a toddler who roasts you harder than anyone ever has.",
+    "an argument with a vending machine... that you lose.",
+    "a grandma who challenges you to a dance-off and destroys you.",
+    "a pigeon wearing tiny sunglasses. Don’t ask why.",
+    "an emotional support ferret that bites everyone except you.",
+    "a mime who makes you question your entire existence in silence.",
+    "a burrito so spicy it sends you into another dimension.",
+    "a clown riding a unicycle through your worst nightmare.",
+    "a guy named Chad who insists he’s your spirit animal."
+  ];
+
+  // Randomly pick an element from each list
+  const beginning = beginnings[Math.floor(Math.random() * beginnings.length)];
+  const ending = endings[Math.floor(Math.random() * endings.length)];
+
+  // Combine them into the ultimate chaotic fortune
+  return `${beginning} ${ending}`;
+}
+
 // Function to generate a random number in weird units
 function generateRandomNumber() {
   const units = [
@@ -90,6 +125,7 @@ function magic8Ball() {
   return answers[Math.floor(Math.random() * answers.length)];
 }
 
+
 // Handle user input in the terminal
 const inputField = document.getElementById('input');
 const outputDiv = document.getElementById('output');
@@ -117,7 +153,7 @@ inputField.addEventListener('keydown', function (e) {
     }
     // Check if the command is "fortune" and respond
     else if (userInput === 'fortune') {
-      const fortune = "You will have a pleasant surprise today!";
+      const fortune = generateFortune();
       outputDiv.innerHTML += `<div>> ${fortune}</div>`;
     }
     // Check if the command is "flip" and respond
