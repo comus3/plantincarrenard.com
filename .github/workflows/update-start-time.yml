@@ -1,0 +1,30 @@
+name: Update startTime on Merge to Main
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow only when there's a push to the 'main' branch
+
+jobs:
+  update_start_time:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
+    - name: Update startTime in script.js
+      run: |
+        # Get current date in the desired format (ISO 8601 format)
+        current_time=$(date --utc +'%Y-%m-%dT%H:%M:%SZ')
+
+        # Use sed to replace the startTime in the script.js file with the current time
+        sed -i "s/const startTime = new Date(\"[^\"]*\");/const startTime = new Date(\"$current_time\");/" script.js
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add script.js
+        git commit -m "Update startTime to $current_time"
+        git push

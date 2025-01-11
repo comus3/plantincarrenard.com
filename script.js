@@ -1,3 +1,4 @@
+const startTime = new Date("2025-01-11T00:00:00Z");
 const textElement = document.getElementById("animated-text");
 
 // Final stages of the text
@@ -6,8 +7,8 @@ const finalDomain = "plantincarrenard.com";
 
 let currentText = ""; // Current text being animated
 let currentIndex = 0; // Index for the final text
-const delayAfterFullName = 2000; // 2-second delay after full name is written
-const matrixSpeed = 10; // Speed for random character effect
+const delayAfterFullName = 800; // 2-second delay after full name is written
+const matrixSpeed = 15; // Speed for random character effect
 
 /**
  * Matrix-style random character effect for a single character.
@@ -79,11 +80,34 @@ function transformText() {
             currentText = currentText
               .replace("plantin-carrenard ", "plantincarrenard.")
             textElement.textContent = currentText;
-          }, 500); // Delay before showing domain name
-        }, 500); // Delay for fading animation
+          }, 1400); // Delay before showing domain name
+        }, 800); // Delay for fading animation
       }, 500); // Delay after removing the accent
-    }, 500); // Delay after decapitalizing letters
+    }, 300); // Delay after decapitalizing letters
   }
   
 // Start the animation
 writeTextMatrixStyle();
+
+
+// Set start time (you can set it to a specific date/time)
+  // Example start time
+const timeDiffElement = document.getElementById('time-difference');
+
+// Function to calculate the time difference
+function updateTimeDifference() {
+  const now = new Date();
+  const diff = now - startTime; // Time difference in milliseconds
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  // Update the element with the calculated time
+  timeDiffElement.textContent = `${days} days, ${hours % 24} hours, ${minutes % 60} minutes`;
+}
+
+// Call the function initially and set an interval to update every minute
+updateTimeDifference();
+setInterval(updateTimeDifference, 60000); // Updates every 60 seconds
