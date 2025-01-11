@@ -6,8 +6,8 @@ const finalDomain = "plantincarrenard.com";
 
 let currentText = ""; // Current text being animated
 let currentIndex = 0; // Index for the final text
-const delayAfterFullName = 2000; // 2-second delay after full name is written
-const matrixSpeed = 10; // Speed for random character effect
+const delayAfterFullName = 800; // 2-second delay after full name is written
+const matrixSpeed = 15; // Speed for random character effect
 
 /**
  * Matrix-style random character effect for a single character.
@@ -79,10 +79,10 @@ function transformText() {
             currentText = currentText
               .replace("plantin-carrenard ", "plantincarrenard.")
             textElement.textContent = currentText;
-          }, 500); // Delay before showing domain name
-        }, 500); // Delay for fading animation
+          }, 1400); // Delay before showing domain name
+        }, 800); // Delay for fading animation
       }, 500); // Delay after removing the accent
-    }, 500); // Delay after decapitalizing letters
+    }, 300); // Delay after decapitalizing letters
   }
   
 // Start the animation
