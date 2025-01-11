@@ -1,3 +1,4 @@
+const startTime = new Date("2025-01-11T00:00:00Z");
 const textElement = document.getElementById("animated-text");
 
 // Final stages of the text
@@ -90,7 +91,7 @@ writeTextMatrixStyle();
 
 
 // Set start time (you can set it to a specific date/time)
-const startTime = new Date("2025-01-11T00:00:00Z");  // Example start time
+  // Example start time
 const timeDiffElement = document.getElementById('time-difference');
 
 // Function to calculate the time difference
