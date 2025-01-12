@@ -1,4 +1,4 @@
-const startTime = new Date("2025-01-12T01:19:58Z");
+const startTime = new Date("2025-01-12T01:34:41Z");
 const textElement = document.getElementById("animated-text");
 
 // Final stages of the text
