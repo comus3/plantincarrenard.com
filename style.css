@@ -138,6 +138,25 @@ body {
   transition: opacity 0.5s ease, transform 0.5s ease;
   display: inline-block;
 }
+/* Cursor style */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 40px;
+  background-color: #00ff00;
+  margin-left: 5px;
+  /* Remove blinking from the start */
+  animation: none;
+}
+
+/* Blinking effect */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
 
 /* Main content (terminal-like) */
 .terminal {

@@ -7,7 +7,7 @@ const finalDomain = "plantincarrenard.com";
 
 let currentText = ""; // Current text being animated
 let currentIndex = 0; // Index for the final text
-const delayAfterFullName = 800; // 2-second delay after full name is written
+const delayAfterFullName = 10; // second delay after full name is written
 const matrixSpeed = 15; // Speed for random character effect
 
 /**
@@ -56,35 +56,61 @@ function writeTextMatrixStyle() {
  * - Converts spaces and completes domain name transformation.
  */
 function transformText() {
-    // Decapitalize "P" and "C"
-    currentText = currentText.replace("P", "p").replace("C", "c").replace("C", "c");
-    textElement.textContent = currentText;
-  
+  // Step 1: Create the cursor element (no blinking yet) and make it visible
+  const cursor = document.createElement('span');
+  cursor.classList.add('cursor'); // Add the cursor class
+  cursor.style.animation = 'blink 1s step-start infinite'; // Start blinking animation
+  textElement.innerHTML = currentText + cursor.outerHTML;
+
+  // Interrupt animation for 3 seconds
+  setTimeout(() => {
+    cursor.style.animation = 'none'; // Stop blinking animation
+    cursor.style.display = 'inline-block'; // Keep the cursor visible without blinking
+    textElement.innerHTML = currentText + cursor.outerHTML; // Update the text with the non-blinking cursor
+
+    // Proceed with Step 2 after the cursor interruption
     setTimeout(() => {
-      // Remove the accent on "ô"
-      currentText = currentText.replace("ô", "o");
-      textElement.textContent = currentText;
-  
+      // Decapitalize "P" and "C"
+      currentText = currentText.replace("P", "p").replace("C", "c").replace("C", "c");
+      textElement.innerHTML = currentText + cursor.outerHTML;
+
+      // Step 3: Continue with the other transformations...
       setTimeout(() => {
-        // Fade out the final "e"
-        textElement.innerHTML = currentText.replace(
-          /e(?!.*e)/,
-          "<span class='fading'>e</span>"
-        );
+        currentText = currentText.replace("ô", "o"); // Remove accent on "ô"
+        textElement.innerHTML = currentText + cursor.outerHTML;
+
+        // Step 4: Fade out the final "e"
         setTimeout(() => {
-          // Remove the final "e" completely
-          currentText = currentText.replace(/e(?!.*e)/, "");
-          textElement.textContent = currentText;
-  
+          textElement.innerHTML = currentText.replace(
+            /e(?!.*e)/,
+            "<span class='fading'>e</span>"
+          );
+          textElement.innerHTML = currentText + cursor.outerHTML;
+
+          // Step 5: Remove the final "e"
           setTimeout(() => {
-            currentText = currentText
-              .replace("plantin-carrenard ", "plantincarrenard.")
-            textElement.textContent = currentText;
-          }, 1400); // Delay before showing domain name
-        }, 800); // Delay for fading animation
-      }, 500); // Delay after removing the accent
-    }, 300); // Delay after decapitalizing letters
-  }
+            currentText = currentText.replace(/e(?!.*e)/, "");
+            textElement.innerHTML = currentText + cursor.outerHTML;
+
+            // Step 6: Transform the domain and update the text
+            setTimeout(() => {
+              currentText = currentText.replace("plantin-carrenard ", "plantincarrenard.");
+              textElement.innerHTML = currentText + cursor.outerHTML;
+
+              // Re-enable the blinking cursor after final transformation
+              setTimeout(() => {
+                cursor.style.animation = 'blink 1s step-start infinite'; // Restart blinking
+                textElement.innerHTML = currentText + cursor.outerHTML;
+              }, 1400); // Delay before final transformation
+            }, 800); // Delay after removing the final "e"
+          }, 800); // Delay after fading out the final "e"
+        }, 500); // Delay after removing accent
+      }, 500); // Delay after decapitalizing letters
+    }, 300); // Initial delay before starting transformations
+  }, 3000); // 3-second interruption for cursor animation
+}
+
+
   
 // Start the animation
 writeTextMatrixStyle();
