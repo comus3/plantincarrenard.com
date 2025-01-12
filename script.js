@@ -2,7 +2,7 @@ const startTime = new Date("2025-01-12T00:40:37Z");
 const textElement = document.getElementById("animated-text");
 
 // Final stages of the text
-const finalText = "Plantin-Carrenard Côme";
+const finalText = "Plantin-Carrenard, Côme";
 const finalDomain = "plantincarrenard.com";
 
 let currentText = ""; // Current text being animated
@@ -94,18 +94,22 @@ function transformText() {
 
             // Step 6: Transform the domain and update the text
             setTimeout(() => {
-              currentText = currentText.replace("plantin-carrenard ", "plantincarrenard.");
+              currentText = currentText.replace("plantin-carrenard, ", "plantincarrenard,");
               textElement.innerHTML = currentText + cursor.outerHTML;
 
               // Re-enable the blinking cursor after final transformation
               setTimeout(() => {
+                currentText = currentText.replace(",", "."); // Replace the comma with a dot
+                textElement.innerHTML = currentText + cursor.outerHTML;
+                setTimeout(() => {
                 cursor.style.animation = 'blink 1s step-start infinite'; // Restart blinking
                 textElement.innerHTML = currentText + cursor.outerHTML;
-              }, 1400); // Delay before final transformation
+                }, 500); // Delay before final transformation
+              }, 1300); // Delay before final transformation
             }, 800); // Delay after removing the final "e"
           }, 800); // Delay after fading out the final "e"
         }, 500); // Delay after removing accent
-      }, 500); // Delay after decapitalizing letters
+      }, 600); // Delay after decapitalizing letters
     }, 300); // Initial delay before starting transformations
   }, 3000); // 3-second interruption for cursor animation
 }
