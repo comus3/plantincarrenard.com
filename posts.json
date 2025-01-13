@@ -16,6 +16,18 @@
       "url": "blog_posts/css-for-beginners.html",
       "last_modified": "2025-01-11T15:00:00Z",
       "created": "2025-01-08T07:30:00Z"
-    }
+    },
+    {
+      "title": "TEST",
+      "url": "blog_posts/test_page.html",
+      "last_modified": "2025-01-11T15:00:00Z",
+      "created": "2025-01-08T07:30:00Z"
+    },
+    {
+        "title": "First post",
+        "url": "blog_posts/first_post.html",
+        "last_modified": "2025-01-11T15:00:00Z",
+        "created": "2025-01-08T07:30:00Z"
+      }
   ]
   

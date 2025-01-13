@@ -1,0 +1,120 @@
+/* General page styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e1e1e1;
+    cursor: url('assets/cursor.cur'), auto;
+  }
+  
+  /* Main container */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .blog-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .rainbow-text {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    animation: rainbow 5s linear infinite;
+    padding: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  @keyframes rainbow {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: green; }
+    57% { color: blue; }
+    71% { color: indigo; }
+    85% { color: violet; }
+    100% { color: red; }
+  }
+  
+  /* Post meta (author, date) */
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .author,
+  .date {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .author {
+    font-weight: bold;
+  }
+  
+  .date {
+    font-style: italic;
+  }
+  
+  /* Post content */
+  .post-content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .post-content a {
+    text-decoration: none;
+    color: #0066cc;
+  }
+  
+  .post-content a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Monkey gif styling */
+  .monkey-gif {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .monkey-gif img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Post pagination buttons */
+  .post-pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .page-btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .page-btn:hover {
+    background-color: #555;
+  }
+  
