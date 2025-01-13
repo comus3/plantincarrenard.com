@@ -45,7 +45,7 @@ jobs:
         posts=$(find blog_posts -name "*.html" | sort)
 
         # Start the posts array
-        echo "const posts = [" > posts.json.js
+        echo "const posts = [" > posts.json
 
         # Loop through each post file and add it to the array
         for post in $posts; do
@@ -61,7 +61,7 @@ jobs:
           created_date="${created_date:-$last_modified}"  # If creation date is unavailable, fallback to modification date
 
           # Add the post with dates to the array
-          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> posts.json.js
+          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> posts.json
         done
         >> posts.json
 
