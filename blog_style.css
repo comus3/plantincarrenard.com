@@ -1,49 +1,155 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    text-align: center;
-    background: url('assets/background.png') repeat;
-    background-size: cover;
-  }
-  
-  .container {
-    padding: 50px 20px;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-shadow: 2px 2px #000;
-  }
-  
-  .banner {
-    font-size: 2rem;
-    color: yellow;
-    background-color: #000;
-    display: inline-block;
-    padding: 10px;
-    margin: 20px 0;
-    border: 3px dashed red;
-  }
-  
-  .construction-gif {
-    width: 300px;
-    margin-top: 20px;
-  }
-  
-  .github-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px #000;
-  }
-  
-  .github-link:hover {
-    background-color: #555;
-  }
+
+
+/* Forum section */
+.forum {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.forum-container {
+  width: 640px;
+  height: 480px;
+  background-image: url('assets/window.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+/* Forum header (top unused space in the image) */
+.forum-header {
+  height: 55px;
+  width: 100%;
+  /* Leave this empty for now; it's just the non-scrollable top part of the image */
+}
+
+/* Forum content (scrollable message area) */
+.forum-content {
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: "Tahoma", sans-serif;
+  font-size: 14px;
+  color: black;
+  background-color: white; /* Matches Windows 2000 forum look */
+}
+
+/* Style individual messages */
+.message {
+  margin-bottom: 1rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 14px;
+}
+
+/* Username and time styles */
+.username {
+  font-weight: bold;
+  color: #000080; /* Dark blue for usernames */
+  margin: 0;
+}
+
+.time {
+  font-size: 12px;
+  color: #808080; /* Gray for time */
+  margin: 0;
+}
+
+.text {
+  margin: 5px 0 0;
+  color: #000; /* Black for text */
+}
+
+/* Custom scrollbar */
+.forum-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forum-content::-webkit-scrollbar-thumb {
+  background: #00ff00; /* Matches Matrix green */
+  border-radius: 4px;
+}
+
+.forum-content::-webkit-scrollbar-track {
+  background: #000; /* Matches Matrix black */
+}
+
+
+
+
+
+/* Blog Page Styles */
+.blog-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.blog-container h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.blog-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blog-post {
+  background-color: #e1e1e1;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.blog-post a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #0066cc;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  padding: 5px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page-btn:hover {
+  background-color: #555;
+}
