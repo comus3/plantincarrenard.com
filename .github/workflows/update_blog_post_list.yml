@@ -1,10 +1,10 @@
 name: Update Blog Posts List
 
 on:
-  push:
-    paths:
-      - 'blog_posts/**'  # Trigger the workflow when there are changes in the blog_posts directory
-
+    push:
+      branches:
+        - main  # Trigger this workflow only when there's a push to the 'main' branch
+  
 jobs:
   update_posts_list:
     runs-on: ubuntu-latest
