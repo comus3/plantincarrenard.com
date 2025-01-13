@@ -1,18 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plantin-Carrenard . Côme</title>
+  <title>Blog</title>
   <link rel="stylesheet" href="blog_style.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>Plantin-Carrenard  .  Côme</h1>
-    <h2 class="banner">🚧 Under Construction 🚧</h2>
-    <img src="assets/construction.gif" alt="Construction GIF" class="construction-gif">
-    <a href="https://github.com/comus3" target="_blank" class="github-link">Check Out My GitHub</a>
+      <!-- Blog Section -->
+      <div class="blog-container">
+        <h1>Welcome to My Retro Blog!</h1>
+        <div class="search-bar">
+          <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
+        </div>
+        <div id="blog-list" class="blog-list">
+          <!-- Blog posts will be inserted here via JavaScript -->
+        </div>
+  
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn" id="prev" onclick="changePage(-1)">Prev</button>
+          <span id="page-num">Page 1</span>
+          <button class="page-btn" id="next" onclick="changePage(1)">Next</button>
+        </div>
+      </div>
+  <!-- Main Content Layout (Blog + Forum) -->
+  <div class="content-wrapper">
+    <!-- Forum Section -->
+    <section class="forum">
+      <div class="forum-container">
+        <div class="forum-header"></div>
+        <div class="forum-content">
+          <div class="message">
+            <p class="username">ChibreLaser</p>
+            <p class="time">2025-01-10 14:22</p>
+            <p class="text">ptdrr ton site il est stylé mais on dirait un virus qui demande mon RIB, j’adore !</p>
+          </div>
+          <div class="message">
+            <p class="username">ClownDuWeb</p>
+            <p class="time">2025-01-10 14:20</p>
+            <p class="text">Wsh ton truc là, ça sent le geek en pyjama qui mange des chips devant Sublime Text.</p>
+          </div>
+          <div class="message">
+            <p class="username">ROOT</p>
+            <p class="time">2025-01-10 14:19</p>
+            <p class="text">Hola aventurier! Appuies sur t pour une super surprise.</p>
+          </div>
+          <div class="message">
+            <p class="username">JeanFluo</p>
+            <p class="time">2025-01-10 14:19</p>
+            <p class="text">Mec y’a plus de vert ici que dans un champ de canabis, ralentis un peu bg.</p>
+          </div>
+          <div class="message">
+            <p class="username">RoiDuDramatique</p>
+            <p class="time">2025-01-10 14:16</p>
+            <p class="text">“Fake forum” mais c’est quoi la prochaine étape ? Tu nous crées un MySpace en 2025 ?</p>
+          </div>
+          <div class="message">
+            <p class="username">BZH_en_force</p>
+            <p class="time">2025-01-10 14:14</p>
+            <p class="text">ton site c’est bien mais ça manque de crêpes et d’alcool, 5/10</p>
+          </div>
+          <div class="message">
+            <p class="username">KheyPasNet</p>
+            <p class="time">2025-01-10 14:13</p>
+            <p class="text">mdr ton site il lag même quand je scrolle, un truc digne de Windows 95</p>
+          </div>
+          <div class="message">
+            <p class="username">BricoTroll</p>
+            <p class="time">2025-01-10 14:12</p>
+            <p class="text">“Hardworking individual” mais gros c’est toi qui fais les trucs en dernière minute avoue.
+            </p>
+          </div>
+          <div class="message">
+            <p class="username">FlexDuHTML</p>
+            <p class="time">2025-01-10 14:10</p>
+            <p class="text">j’ai lu “neural networks” mais on sait tous que t’as mis ça pour flex. T’as cliqué un tuto
+              et c’est tout.</p>
+          </div>
+          <div class="message">
+            <p class="username">DaronRespecte</p>
+            <p class="time">2025-01-10 14:09</p>
+            <p class="text">Ton site c’est bien mais si j’le montre à ma daronne elle va croire que j’suis devenu
+              hacker.</p>
+          </div>
+          <div class="message">
+            <p class="username">JusDeClavier</p>
+            <p class="time">2025-01-10 14:08</p>
+            <p class="text">Stylé ton site mais wsh pourquoi mon ventilo il fait le bruit d’un avion qui décolle ?</p>
+          </div>
+          <div class="message">
+            <p class="username">JpeuxPasJaiWeb</p>
+            <p class="time">2025-01-10 14:07</p>
+            <p class="text">On est d’accord que t’as mis “Linux” juste pour impressionner un recruteur hein ? Allez avoue gros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
   </div>
+
   <script src="blog_script.js"></script>
 </body>
+
 </html>
