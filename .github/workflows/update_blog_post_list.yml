@@ -39,7 +39,7 @@ jobs:
         done
 
         # Close the array
-        echo "];" >> blog_script.js
+        echo "];" >> posts.json
 
     - name: Commit and push changes
       run: |
