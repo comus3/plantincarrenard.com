@@ -65,13 +65,13 @@ jobs:
         done
 
         # Close the array
-        echo "];" >> blog_script.js
+        echo "];" >> posts.json
 
     - name: Commit blog posts list update
       run: |
         git config user.name "comus3"
         git config user.email "come.plantin.carrenard@gmail.com"
-        git add blog_script.js
+        git add posts.json
         git commit -m "Update blog posts list"
 
     - name: Push changes to main
