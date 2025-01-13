@@ -45,6 +45,9 @@ jobs:
       run: |
         git config user.name "comus3"
         git config user.email "come.plantin.carrenard@gmail.com"
+        git fetch origin main
+        git merge origin/main --no-edit || git reset --hard origin/main
         git add blog_script.js
         git commit -m "Update blog posts list"
         git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+    
