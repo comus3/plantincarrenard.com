@@ -9,23 +9,31 @@
 </head>
 
 <body>
-      <!-- Blog Section -->
-      <div class="blog-container">
-        <h1>Welcome to My Retro Blog!</h1>
-        <div class="search-bar">
-          <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
-        </div>
-        <div id="blog-list" class="blog-list">
-          <!-- Blog posts will be inserted here via JavaScript -->
-        </div>
-  
-        <!-- Pagination -->
-        <div class="pagination">
-          <button class="page-btn" id="prev" onclick="changePage(-1)">Prev</button>
-          <span id="page-num">Page 1</span>
-          <button class="page-btn" id="next" onclick="changePage(1)">Next</button>
-        </div>
-      </div>
+  <div class="blog-container">
+    <h1>Welcome to My Retro Blog!</h1>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
+    </div>
+
+    <div class="sorting-options">
+      <button id="sort-alphabetical">Sort Alphabetically (A-Z)</button>
+      <button id="sort-alphabetical-desc">Sort Alphabetically (Z-A)</button>
+      <button id="sort-created">Sort by Creation Date (Oldest First)</button>
+      <button id="sort-created-desc">Sort by Creation Date (Newest First)</button>
+      <button id="sort-modified">Sort by Last Modified Date (Oldest First)</button>
+      <button id="sort-modified-desc">Sort by Last Modified Date (Newest First)</button>
+    </div>
+
+    <div id="blog-list" class="blog-list">
+      <!-- Blog posts will be inserted here via JavaScript -->
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn" id="prev" onclick="changePage(-1)">Prev</button>
+      <span id="page-num">Page 1</span>
+      <button class="page-btn" id="next" onclick="changePage(1)">Next</button>
+    </div>
+  </div>
   <!-- Main Content Layout (Blog + Forum) -->
   <div class="content-wrapper">
     <!-- Forum Section -->
@@ -94,7 +102,8 @@
           <div class="message">
             <p class="username">JpeuxPasJaiWeb</p>
             <p class="time">2025-01-10 14:07</p>
-            <p class="text">On est d’accord que t’as mis “Linux” juste pour impressionner un recruteur hein ? Allez avoue gros.</p>
+            <p class="text">On est d’accord que t’as mis “Linux” juste pour impressionner un recruteur hein ? Allez
+              avoue gros.</p>
           </div>
         </div>
       </div>
