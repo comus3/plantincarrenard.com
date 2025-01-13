@@ -39,13 +39,13 @@ jobs:
         git add .
         git commit -m "Update startTime in script.js"
 
-    - name: Generate new posts array and update blog_script.js
+    - name: Generate new posts array and update posts.js
       run: |
         # Find all .html files in the blog_posts directory and sort them
         posts=$(find blog_posts -name "*.html" | sort)
 
         # Start the posts array
-        echo "const posts = [" > blog_script.js
+        echo "const posts = [" > posts.json.js
 
         # Loop through each post file and add it to the array
         for post in $posts; do
@@ -61,7 +61,7 @@ jobs:
           created_date="${created_date:-$last_modified}"  # If creation date is unavailable, fallback to modification date
 
           # Add the post with dates to the array
-          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> blog_script.js
+          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> posts.json.js
         done
         >> posts.json
 
