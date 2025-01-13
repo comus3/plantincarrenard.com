@@ -1,19 +1,45 @@
-name: Update Blog Posts List
+name: Update startTime and Blog Posts List
 
 on:
-    push:
-      branches:
-        - main  # Trigger this workflow only when there's a push to the 'main' branch
-  
+  push:
+    branches:
+      - main  # Trigger this workflow only when there's a push to the 'main' branch
+
 jobs:
-  update_posts_list:
+  update_start_time_and_posts:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout the code
       uses: actions/checkout@v3
 
-    - name: Generate new posts array
+    - name: Check if trigram_daily_update is in commit message
+      run: |
+        # Get the commit message
+        COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+        
+        # Check if trigram_daily_update is in the commit message
+        if [[ "$COMMIT_MESSAGE" == *"trigram_daily_update"* ]]; then
+          echo "Skipping startTime update, trigram update detected."
+          exit 0
+        fi
+
+    - name: Update startTime in script.js
+      run: |
+        # Get current date in the desired format (ISO 8601 format)
+        current_time=$(date --utc +'%Y-%m-%dT%H:%M:%SZ')
+
+        # Use sed to replace the startTime in the script.js file with the current time
+        sed -i "s/const startTime = new Date(\"[^\"]*\");/const startTime = new Date(\"$current_time\");/" script.js
+
+    - name: Commit startTime update
+      run: |
+        git config user.name "comus3"
+        git config user.email "come.plantin.carrenard@gmail.com"
+        git add script.js
+        git commit -m "Update startTime in script.js"
+
+    - name: Generate new posts array and update blog_script.js
       run: |
         # Find all .html files in the blog_posts directory and sort them
         posts=$(find blog_posts -name "*.html" | sort)
@@ -39,15 +65,15 @@ jobs:
         done
 
         # Close the array
-        echo "];" >> posts.json
+        echo "];" >> blog_script.js
 
-    - name: Commit and push changes
+    - name: Commit blog posts list update
       run: |
         git config user.name "comus3"
         git config user.email "come.plantin.carrenard@gmail.com"
-        git fetch origin main
-        git merge origin/main --no-edit || git reset --hard origin/main
         git add blog_script.js
         git commit -m "Update blog posts list"
+
+    - name: Push changes to main
+      run: |
         git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
-    
