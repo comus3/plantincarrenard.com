@@ -36,7 +36,7 @@ jobs:
       run: |
         git config user.name "comus3"
         git config user.email "come.plantin.carrenard@gmail.com"
-        git add script.js
+        git add .
         git commit -m "Update startTime in script.js"
 
     - name: Generate new posts array and update blog_script.js
@@ -69,7 +69,7 @@ jobs:
       run: |
         git config user.name "comus3"
         git config user.email "come.plantin.carrenard@gmail.com"
-        git add posts.json
+        git add .
         git commit -m "Update blog posts list"
 
     - name: Push changes to main
