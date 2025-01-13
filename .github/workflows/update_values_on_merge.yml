@@ -45,7 +45,7 @@ jobs:
         posts=$(find blog_posts -name "*.html" | sort)
 
         # Start the posts array
-        echo "const posts = [" > posts.json
+        echo "[" > posts.json
 
         # Loop through each post file and add it to the array
         for post in $posts; do
@@ -62,7 +62,8 @@ jobs:
 
           # Add the post with dates to the array
           echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> posts.json
-        done
+          done
+        echo "]"
         >> posts.json
 
     - name: Commit blog posts list update
