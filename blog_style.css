@@ -153,3 +153,127 @@
 .page-btn:hover {
   background-color: #555;
 }
+/* hidden text class */
+.hidden {
+  display: none;
+}
+
+.sortbox {
+  font-family: Arial, sans-serif;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Align items vertically */
+  position: relative;
+}
+
+.sortbox .label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.sortbox .dselect_container {
+  position: relative;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.sortbox .trigger {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #1c1c1c;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 200px;
+  text-align: center;
+}
+
+.sortbox .dropcontainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 1000;
+}
+
+.sortbox .dropdownhidden {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sortbox .dropdownhidden li {
+  padding: 8px 12px;
+}
+
+.sortbox .dropdownhidden li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sortbox .dropdownhidden li a:hover {
+  background-color: #444;
+}
+
+.sortbox .dropdownhidden li a.active {
+  background-color: #0073e6;
+}
+
+.sortbox .dropcontainer.show {
+  display: block;
+}
+
+.sortbox .sort-direction {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Space between the dropdown and button */
+}
+
+.sortbox .toggle-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.sortbox .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1c1c1c;
+}
+
+.sortbox .arrow-down::before {
+  content: "↓";
+  font-size: 12px;
+  color: #333;
+}
+
+.sortbox .arrow-up::before {
+  content: "↑";
+  font-size: 12px;
+  color: #333;
+}
+
+.sortbox .sort-direction span {
+  font-size: 14px;
+  color: #333;
+}
+
+.sortbox .sort-direction .active-arrow {
+  color: #0073e6;
+}

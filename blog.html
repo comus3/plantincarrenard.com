@@ -15,23 +15,31 @@
       <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
     </div>
 
-    <div class="sortbox">
-      <div class="label"></div>
-      <div class="dselect_container" id="sort_by_dselect_container">
-        <input id="sort_by" type="hidden" name="sort_by" value="created_asc">
-        <a class="trigger" id="sort_by_trigger" href="javascript:void(0);" onclick="toggleDropdown()">Sort by</a>
-        <div class="dropcontainer" id="sort_by_listctn">
-          <ul class="dropdownhidden" id="sort_by_droplist">
-            <li><a href="javascript:void(0);" onclick="sortPosts('created', 'asc')">Creation date (ascending)</a></li>
-            <li><a href="javascript:void(0);" onclick="sortPosts('created', 'desc')">Creation date (descending)</a></li>
-            <li><a href="javascript:void(0);" onclick="sortPosts('last_modified', 'asc')">Last modified date (ascending)</a></li>
-            <li><a href="javascript:void(0);" onclick="sortPosts('last_modified', 'desc')">Last modified date (descending)</a></li>
-            <li><a href="javascript:void(0);" onclick="sortPosts('alphabetical', 'asc')">Name (A-Z)</a></li>
-            <li><a href="javascript:void(0);" onclick="sortPosts('alphabetical', 'desc')">Name (Z-A)</a></li>
-          </ul>
-        </div>
-      </div>
+<div class="sortbox">
+  <div class="label"></div>
+  <div class="dselect_container" id="sort_by_dselect_container">
+    <input id="sort_by" type="hidden" name="sort_by" value="created">
+    <a class="trigger" id="sort_by_trigger" href="javascript:void(0);" onclick="toggleDropdown()">Sort by</a>
+    <div class="dropcontainer" id="sort_by_listctn">
+      <ul class="dropdownhidden" id="sort_by_droplist">
+        <li><a href="javascript:void(0);" onclick="sortPosts('created')">Creation date</a></li>
+        <li><a href="javascript:void(0);" onclick="sortPosts('last_modified')">Last modified</a></li>
+        <li><a href="javascript:void(0);" onclick="sortPosts('alphabetical')">Alphabetical</a></li>
+      </ul>
     </div>
+  </div>
+  <div class="sort-direction">
+    <div class="toggle-button" id="toggleSortDirection" onclick="toggleDirection()">
+      <span id="directionIcon" class="arrow-down"></span>
+    </div>
+    <!-- hide text for now  -->
+    <span id="directionText" class="hidden">Descending</span>
+  </div>
+</div>
+
+<div id="blog-list"></div>
+
+    
     
     
 

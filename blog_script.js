@@ -1,5 +1,7 @@
 let posts = [];
 let filteredPosts = []; // Store filtered posts based on search
+let currentSort = "created";
+let isAscending = false;
 
 const loadPosts = async () => {
   try {
@@ -15,6 +17,41 @@ const loadPosts = async () => {
   }
 };
 
+const toggleDropdown = () => {
+  document.getElementById('sort_by_listctn').classList.toggle('show');
+};
+
+const sortPosts = (criteria) => {
+  // Set the sorting criteria
+  currentSort = criteria;
+
+  // Resort posts when criteria changes
+  resortPosts();
+};
+
+const resortPosts = () => {
+  // Sorting logic
+  filteredPosts.sort((a, b) => {
+    let dateA, dateB;
+
+    if (currentSort === 'alphabetical') {
+      return isAscending ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+    } else if (currentSort === 'created') {
+      dateA = new Date(a.created);
+      dateB = new Date(b.created);
+    } else if (currentSort === 'last_modified') {
+      dateA = new Date(a.last_modified);
+      dateB = new Date(b.last_modified);
+    }
+
+    return isAscending ? dateA - dateB : dateB - dateA;
+  });
+
+  // Display the sorted posts
+  displayPosts();
+};
+
+// Function to display the posts (same as before)
 const displayPosts = () => {
   // Clear the existing posts before displaying the new ones
   const blogList = document.getElementById('blog-list');
@@ -25,12 +62,10 @@ const displayPosts = () => {
     return;
   }
 
-  // Loop through the filtered posts and display them
   filteredPosts.forEach(post => {
     const postElement = document.createElement('div');
     postElement.classList.add('blog-post');
     
-    // Format the dates to a more readable format
     const lastModified = new Date(post.last_modified).toLocaleString();
     const created = new Date(post.created).toLocaleString();
 
@@ -42,45 +77,28 @@ const displayPosts = () => {
   });
 };
 
-const sortPosts = (criteria, order = 'asc') => {
-  // Sorting logic
-  filteredPosts.sort((a, b) => {
-    let dateA, dateB;
+const toggleDirection = () => {
+  isAscending = !isAscending;
 
-    if (criteria === 'alphabetical') {
-      return order === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
-    } else if (criteria === 'created') {
-      dateA = new Date(a.created);
-      dateB = new Date(b.created);
-    } else if (criteria === 'last_modified') {
-      dateA = new Date(a.last_modified);
-      dateB = new Date(b.last_modified);
-    }
-
-    return order === 'asc' ? dateA - dateB : dateB - dateA;
-  });
-
-  displayPosts();
-};
-
-// Sorting buttons
-document.getElementById('sort-alphabetical').addEventListener('click', () => sortPosts('alphabetical'));
-document.getElementById('sort-alphabetical-desc').addEventListener('click', () => sortPosts('alphabetical', 'desc'));
-document.getElementById('sort-created').addEventListener('click', () => sortPosts('created'));
-document.getElementById('sort-created-desc').addEventListener('click', () => sortPosts('created', 'desc'));
-document.getElementById('sort-modified').addEventListener('click', () => sortPosts('last_modified'));
-document.getElementById('sort-modified-desc').addEventListener('click', () => sortPosts('last_modified', 'desc'));
-
-// Search function
-function searchPosts() {
-  const query = document.getElementById('search').value.toLowerCase();
+  const directionText = document.getElementById('directionText');
+  const directionIcon = document.getElementById('directionIcon');
+  const toggleButton = document.getElementById('toggleSortDirection');
   
-  // Filter posts based on the search query (case-insensitive)
-  filteredPosts = posts.filter(post => post.title.toLowerCase().includes(query));
+  if (isAscending) {
+    directionText.textContent = 'Ascending';
+    directionIcon.classList.remove('arrow-down');
+    directionIcon.classList.add('arrow-up');
+    toggleButton.classList.add('active');
+  } else {
+    directionText.textContent = 'Descending';
+    directionIcon.classList.remove('arrow-up');
+    directionIcon.classList.add('arrow-down');
+    toggleButton.classList.remove('active');
+  }
 
-  // Display the filtered posts
-  displayPosts();
-}
+  // Resort the posts after changing the direction
+  resortPosts();
+};
 
 // Call loadPosts to fetch the posts and render them once loaded
 loadPosts();
