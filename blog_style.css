@@ -102,10 +102,20 @@
   color: #333;
 }
 
-.search-bar input {
-  width: 100%;
-  padding: 10px;
+.search-sort-container {
+  background-color: #f0f0f0; /* Gray background */
+  padding: 20px;
+  border-radius: 8px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between; /* Align search bar and sortbox side by side */
+  gap: 20px;
+}
+
+.search-bar input {
+  width: 300px; /* Adjust width as needed */
+  padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -159,10 +169,9 @@
 }
 
 .sortbox {
-  font-family: Arial, sans-serif;
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Align items vertically */
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sortbox .label {
