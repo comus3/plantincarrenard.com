@@ -1,5 +1,3 @@
-
-
 /* Forum section */
 .forum {
   display: flex;
@@ -12,18 +10,22 @@
   width: 640px;
   height: 480px;
   background-image: url('assets/window.png');
+  padding: 70px 0px 0px 0px;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: relative; /* This keeps the forum within its container bounds */
   overflow: hidden;
   margin-bottom: 4rem;
+  z-index: 1; /* Ensures it stays above the background but below other content */
 }
+
 
 /* Forum header (top unused space in the image) */
 .forum-header {
   height: 55px;
   width: 100%;
-  /* Leave this empty for now; it's just the non-scrollable top part of the image */
+  position: absolute; /* Keep it within the forum container */
+  top: 0;
 }
 
 /* Forum content (scrollable message area) */
@@ -37,6 +39,7 @@
   font-size: 14px;
   color: black;
   background-color: white; /* Matches Windows 2000 forum look */
+  z-index: 2; /* Ensures the content stays above the window background */
 }
 
 /* Style individual messages */
@@ -84,27 +87,68 @@
 
 
 
+@keyframes rainbow {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+
+.rainbow-text {
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Classic 2000s font */
+  font-size: 3rem;
+  text-align: center;
+  animation: rainbow 5s linear infinite;
+  background-image: url('assets/retro_bg.png'); /* Optional background image */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
 
 
 /* Blog Page Styles */
 body {
-  background-image: url('assets/blog_page_bg_400.png');
-  background-size: cover; /* Ensures the image covers the whole page */
-  background-position: center; /* Centers the background image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('assets/blog_page_bg_400.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: url('assets/cursor.cur'), auto;
+}
+
+.text:hover {
+  cursor: url('assets/cursor.cur'), text; /* Cursor changes over text */
+}
+
+a:hover {
+  cursor: url('assets/cursor.cur'), pointer; /* Cursor changes over links */
+}
+
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px; /* Space between blog and forum */
 }
 
 
 .blog-container {
-  max-width: 900px;
-  margin: 20px auto;
+  flex: 2; /* 2/3 of the space */
+  margin-right: 20px; /* Space between blog and forum */
   padding: 20px;
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-radius: 8px;
+  max-width: 66%; /* Max width to ensure it takes up 2/3 */
 }
 
 .blog-container h1 {
@@ -174,6 +218,8 @@ body {
 .page-btn:hover {
   background-color: #555;
 }
+
+
 /* hidden text class */
 .hidden {
   display: none;
@@ -296,4 +342,23 @@ body {
 
 .sortbox .sort-direction .active-arrow {
   color: #0073e6;
+}
+
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column; /* Stack blog and forum on top of each other */
+  }
+
+  .blog-container {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px; /* Add space between blog and forum */
+  }
+
+  .forum-container {
+    max-width: 100%;
+    margin-top: 20px; /* Ensure the forum is below the blog */
+  }
 }
