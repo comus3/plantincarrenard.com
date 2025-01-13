@@ -44,7 +44,7 @@ jobs:
         # Find all .html files in the blog_posts directory and sort them
         posts=$(find blog_posts -name "*.html" | sort)
 
-        # Start the posts array
+        # Start the posts array in JSON format
         echo "[" > posts.json
 
         # Loop through each post file and add it to the array
@@ -56,15 +56,18 @@ jobs:
           last_modified=$(stat -c %y "$post")
           created_date=$(stat -c %W "$post")
 
-          # Format the date for JS (remove the timezone part for simplicity)
+          # Format the date for JSON (remove the timezone part for simplicity)
           last_modified="${last_modified%% *}"
           created_date="${created_date:-$last_modified}"  # If creation date is unavailable, fallback to modification date
 
-          # Add the post with dates to the array
-          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> posts.json
-          done
-        echo "]"
-        >> posts.json
+          # Add the post with dates to the array, ensuring the correct JSON format
+          echo "  {\"title\": \"$title\", \"url\": \"blog_posts/$title.html\", \"last_modified\": \"$last_modified\", \"created\": \"$created_date\"}," >> posts.json
+        done
+
+        # Remove the last comma and close the array
+        sed -i '$ s/,$//' posts.json
+        echo "]" >> posts.json
+
 
     - name: Commit blog posts list update
       run: |
