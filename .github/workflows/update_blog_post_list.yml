@@ -1,0 +1,50 @@
+name: Update Blog Posts List
+
+on:
+  push:
+    paths:
+      - 'blog_posts/**'  # Trigger the workflow when there are changes in the blog_posts directory
+
+jobs:
+  update_posts_list:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
+    - name: Generate new posts array
+      run: |
+        # Find all .html files in the blog_posts directory and sort them
+        posts=$(find blog_posts -name "*.html" | sort)
+
+        # Start the posts array
+        echo "const posts = [" > blog_script.js
+
+        # Loop through each post file and add it to the array
+        for post in $posts; do
+          # Get the title by removing the 'blog_posts/' prefix and '.html' suffix
+          title=$(basename "$post" .html)
+
+          # Get the last modified and creation dates
+          last_modified=$(stat -c %y "$post")
+          created_date=$(stat -c %W "$post")
+
+          # Format the date for JS (remove the timezone part for simplicity)
+          last_modified="${last_modified%% *}"
+          created_date="${created_date:-$last_modified}"  # If creation date is unavailable, fallback to modification date
+
+          # Add the post with dates to the array
+          echo "  { title: \"$title\", url: \"blog_posts/$title.html\", last_modified: \"$last_modified\", created: \"$created_date\" }," >> blog_script.js
+        done
+
+        # Close the array
+        echo "];" >> blog_script.js
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "comus3"
+        git config user.email "come.plantin.carrenard@gmail.com"
+        git add blog_script.js
+        git commit -m "Update blog posts list"
+        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
