@@ -10,56 +10,91 @@
 </head>
 
 <body>
+  <header>
+    <div class="banner">
+      <!-- Left part of the banner (Trigram + Time Difference) -->
+      <div class="banner-left">
+        <span class="trigram">Tue</span>
+
+        <!-- Time difference display added here -->
+        <div class="gray-box">
+          <div class="switch-row">
+            <span class="label">Dynamic/Static</span>
+            <span class="switch">
+              <span class="red"></span> <!-- Red dot -->
+              <span class="green"></span> <!-- Green dot -->
+            </span>
+          </div>
+          <div class="switch-row">
+            <span class="label">Hosted on</span>
+            <span class="value">Github</span>
+          </div>
+          <div class="switch-row">
+            <span class="label">Last update</span>
+            <span class="value" id="time-difference">Loading...</span> <!-- Time Difference Placeholder -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right part of the banner (Titles) -->
+      <div class="banner-right">
+        <a href="/" class="banner-link">Home</a>
+        <a href="/blog.html" class="banner-link">Blog</a>
+      </div>
+    </div>
+  </header>
+
+
   <div class="main-container">
-  <div class="blog-container">
-    <h1 class="rainbow-text">BLLOOOGGGGOOOLLBB</h1>
-    <div class="search-sort-container">
-      <div class="search-bar">
-        <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
-      </div>
-    
-      <div class="sortbox">
-        <div class="label"></div>
-        <div class="dselect_container" id="sort_by_dselect_container">
-          <input id="sort_by" type="hidden" name="sort_by" value="created">
-          <a class="trigger" id="sort_by_trigger" href="javascript:void(0);" onclick="toggleDropdown()">Sort by</a>
-          <div class="dropcontainer" id="sort_by_listctn">
-            <ul class="dropdownhidden" id="sort_by_droplist">
-              <li><a href="javascript:void(0);" onclick="sortPosts('created')">Creation date</a></li>
-              <li><a href="javascript:void(0);" onclick="sortPosts('last_modified')">Last modified</a></li>
-              <li><a href="javascript:void(0);" onclick="sortPosts('alphabetical')">Alphabetical</a></li>
-            </ul>
+    <div class="blog-container">
+      <h1 class="rainbow-text">BLLOOOGGGGOOOLLBB</h1>
+      <div class="search-sort-container">
+        <div class="search-bar">
+          <input type="text" id="search" placeholder="Search blog posts..." onkeyup="searchPosts()">
+        </div>
+
+        <div class="sortbox">
+          <div class="label"></div>
+          <div class="dselect_container" id="sort_by_dselect_container">
+            <input id="sort_by" type="hidden" name="sort_by" value="created">
+            <a class="trigger" id="sort_by_trigger" href="javascript:void(0);" onclick="toggleDropdown()">Sort by</a>
+            <div class="dropcontainer" id="sort_by_listctn">
+              <ul class="dropdownhidden" id="sort_by_droplist">
+                <li><a href="javascript:void(0);" onclick="sortPosts('created')">Creation date</a></li>
+                <li><a href="javascript:void(0);" onclick="sortPosts('last_modified')">Last modified</a></li>
+                <li><a href="javascript:void(0);" onclick="sortPosts('alphabetical')">Alphabetical</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="sort-direction">
+            <div class="toggle-button" id="toggleSortDirection" onclick="toggleDirection()">
+              <span id="directionIcon" class="arrow-down"></span>
+            </div>
+            <!-- hide text for now  -->
+            <span id="directionText" class="hidden">Descending</span>
           </div>
         </div>
-        <div class="sort-direction">
-          <div class="toggle-button" id="toggleSortDirection" onclick="toggleDirection()">
-            <span id="directionIcon" class="arrow-down"></span>
-          </div>
-          <!-- hide text for now  -->
-          <span id="directionText" class="hidden">Descending</span>
-        </div>
+      </div>
+
+
+      <div id="blog-list"></div>
+
+
+
+
+
+      <div id="blog-list" class="blog-list">
+        <!-- Blog posts will be inserted here via JavaScript -->
+      </div>
+
+      <div class="pagination">
+        <button class="page-btn" id="prev" onclick="changePage(-1)">Prev</button>
+        <span id="page-num">Page 1</span>
+        <button class="page-btn" id="next" onclick="changePage(1)">Next</button>
       </div>
     </div>
-    
+    <!-- Main Content Layout (Blog + Forum) -->
 
-<div id="blog-list"></div>
-
-    
-    
-    
-
-    <div id="blog-list" class="blog-list">
-      <!-- Blog posts will be inserted here via JavaScript -->
-    </div>
-
-    <div class="pagination">
-      <button class="page-btn" id="prev" onclick="changePage(-1)">Prev</button>
-      <span id="page-num">Page 1</span>
-      <button class="page-btn" id="next" onclick="changePage(1)">Next</button>
-    </div>
-  </div>
-  <!-- Main Content Layout (Blog + Forum) -->
-  
     <!-- Forum Section -->
     <section class="forum">
       <div class="forum-container">

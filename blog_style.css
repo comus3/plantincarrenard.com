@@ -1,3 +1,114 @@
+/* Banner section */
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  /* Adjust the height of the banner */
+  position: relative;
+  /* For positioning child elements */
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* Add space between the trigram and the time difference */
+}
+
+.trigram {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: green;
+  text-shadow: 0 0 10px #00ff00;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+
+.gray-box {
+  background-color: #333;
+  padding: 5px 10px;
+  /* Reduced padding to fit within the 60px height */
+  border-radius: 8px;
+  height: 40px;
+  /* Fixed height */
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Vertically center the content */
+  gap: 5px;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  /* Adjusted font size to fit */
+}
+
+.switch {
+  display: flex;
+  gap: 5px;
+}
+
+.red,
+.green {
+  width: 10px;
+  /* Adjusted size for dots */
+  height: 10px;
+  /* Adjusted size for dots */
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.value {
+  color: #fffa;
+  font-size: 0.9rem;
+  /* Adjusted font size for better fit */
+}
+
+.banner-right {
+  display: flex;
+  gap: 20px;
+}
+
+.banner-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ff00;
+  text-decoration: none;
+}
+
+.banner-link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
 /* Forum section */
 .forum {
   display: flex;
@@ -13,10 +124,12 @@
   padding: 70px 0px 0px 0px;
   background-size: cover;
   background-position: center;
-  position: relative; /* This keeps the forum within its container bounds */
+  position: relative;
+  /* This keeps the forum within its container bounds */
   overflow: hidden;
   margin-bottom: 4rem;
-  z-index: 1; /* Ensures it stays above the background but below other content */
+  z-index: 1;
+  /* Ensures it stays above the background but below other content */
 }
 
 
@@ -24,7 +137,8 @@
 .forum-header {
   height: 55px;
   width: 100%;
-  position: absolute; /* Keep it within the forum container */
+  position: absolute;
+  /* Keep it within the forum container */
   top: 0;
 }
 
@@ -38,8 +152,10 @@
   font-family: "Tahoma", sans-serif;
   font-size: 14px;
   color: black;
-  background-color: white; /* Matches Windows 2000 forum look */
-  z-index: 2; /* Ensures the content stays above the window background */
+  background-color: white;
+  /* Matches Windows 2000 forum look */
+  z-index: 2;
+  /* Ensures the content stays above the window background */
 }
 
 /* Style individual messages */
@@ -56,19 +172,22 @@
 /* Username and time styles */
 .username {
   font-weight: bold;
-  color: #000080; /* Dark blue for usernames */
+  color: #000080;
+  /* Dark blue for usernames */
   margin: 0;
 }
 
 .time {
   font-size: 12px;
-  color: #808080; /* Gray for time */
+  color: #808080;
+  /* Gray for time */
   margin: 0;
 }
 
 .text {
   margin: 5px 0 0;
-  color: #000; /* Black for text */
+  color: #000;
+  /* Black for text */
 }
 
 /* Custom scrollbar */
@@ -77,33 +196,60 @@
 }
 
 .forum-content::-webkit-scrollbar-thumb {
-  background: #00ff00; /* Matches Matrix green */
+  background: #00ff00;
+  /* Matches Matrix green */
   border-radius: 4px;
 }
 
 .forum-content::-webkit-scrollbar-track {
-  background: #000; /* Matches Matrix black */
+  background: #000;
+  /* Matches Matrix black */
 }
 
 
 
 @keyframes rainbow {
-  0% { color: red; }
-  14% { color: orange; }
-  28% { color: yellow; }
-  42% { color: green; }
-  57% { color: blue; }
-  71% { color: indigo; }
-  85% { color: violet; }
-  100% { color: red; }
+  0% {
+    color: red;
+  }
+
+  14% {
+    color: orange;
+  }
+
+  28% {
+    color: yellow;
+  }
+
+  42% {
+    color: green;
+  }
+
+  57% {
+    color: blue;
+  }
+
+  71% {
+    color: indigo;
+  }
+
+  85% {
+    color: violet;
+  }
+
+  100% {
+    color: red;
+  }
 }
 
 .rainbow-text {
-  font-family: 'Comic Sans MS', cursive, sans-serif; /* Classic 2000s font */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  /* Classic 2000s font */
   font-size: 3rem;
   text-align: center;
   animation: rainbow 5s linear infinite;
-  background-image: url('assets/retro_bg.png'); /* Optional background image */
+  background-image: url('assets/retro_bg.png');
+  /* Optional background image */
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -124,11 +270,13 @@ body {
 }
 
 .text:hover {
-  cursor: url('assets/cursor.cur'), text; /* Cursor changes over text */
+  cursor: url('assets/cursor.cur'), text;
+  /* Cursor changes over text */
 }
 
 a:hover {
-  cursor: url('assets/cursor.cur'), pointer; /* Cursor changes over links */
+  cursor: url('assets/cursor.cur'), pointer;
+  /* Cursor changes over links */
 }
 
 
@@ -137,18 +285,22 @@ a:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
-  gap: 20px; /* Space between blog and forum */
+  gap: 20px;
+  /* Space between blog and forum */
 }
 
 
 .blog-container {
-  flex: 2; /* 2/3 of the space */
-  margin-right: 20px; /* Space between blog and forum */
+  flex: 2;
+  /* 2/3 of the space */
+  margin-right: 20px;
+  /* Space between blog and forum */
   padding: 20px;
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-radius: 8px;
-  max-width: 66%; /* Max width to ensure it takes up 2/3 */
+  max-width: 66%;
+  /* Max width to ensure it takes up 2/3 */
 }
 
 .blog-container h1 {
@@ -158,17 +310,20 @@ a:hover {
 }
 
 .search-sort-container {
-  background-color: #f0f0f0; /* Gray background */
+  background-color: #f0f0f0;
+  /* Gray background */
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-between; /* Align search bar and sortbox side by side */
+  justify-content: space-between;
+  /* Align search bar and sortbox side by side */
   gap: 20px;
 }
 
 .search-bar input {
-  width: 300px; /* Adjust width as needed */
+  width: 300px;
+  /* Adjust width as needed */
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -239,7 +394,8 @@ a:hover {
 
 .sortbox .dselect_container {
   position: relative;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
+  /* Prevent shrinking */
 }
 
 .sortbox .trigger {
@@ -300,7 +456,8 @@ a:hover {
 .sortbox .sort-direction {
   display: flex;
   align-items: center;
-  margin-left: 10px; /* Space between the dropdown and button */
+  margin-left: 10px;
+  /* Space between the dropdown and button */
 }
 
 .sortbox .toggle-button {
@@ -348,17 +505,20 @@ a:hover {
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
   .main-container {
-    flex-direction: column; /* Stack blog and forum on top of each other */
+    flex-direction: column;
+    /* Stack blog and forum on top of each other */
   }
 
   .blog-container {
     max-width: 100%;
     margin-right: 0;
-    margin-bottom: 20px; /* Add space between blog and forum */
+    margin-bottom: 20px;
+    /* Add space between blog and forum */
   }
 
   .forum-container {
     max-width: 100%;
-    margin-top: 20px; /* Ensure the forum is below the blog */
+    margin-top: 20px;
+    /* Ensure the forum is below the blog */
   }
 }
