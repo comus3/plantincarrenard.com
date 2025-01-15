@@ -1,4 +1,4 @@
-const startTime = new Date("2025-01-13T21:48:38Z");
+const startTime = new Date("2025-01-14T19:34:58Z");
 const textElement = document.getElementById("animated-text");
 
 // Final stages of the text
@@ -9,6 +9,76 @@ let currentText = ""; // Current text being animated
 let currentIndex = 0; // Index for the final text
 const delayAfterFullName = 10; // second delay after full name is written
 const matrixSpeed = 15; // Speed for random character effect
+
+/****************
+ * 
+ * 
+ *  Below are the functions to manipul;ate the rectangle that will
+ *  hide the text and make the 
+ *  crt tuning on effect with blur and opacity
+ * 
+ * 
+ * 
+ ******************/
+
+
+// Function to create the black rectangle and display it above everything
+function showRectangle() {
+  // Check if the rectangle already exists
+  if (document.getElementById('black-rectangle')) return;
+  // Ensure `#animated-text` is visible
+  const animatedText = document.getElementById('animated-text');
+  if (animatedText) {
+    animatedText.style.position = 'relative';
+    animatedText.style.zIndex = '10000'; // Bring it above the rectangle
+    console.log('Element with ID "animated-text" found.');
+  }
+  else {
+    console.log('Element with ID "animated-text" not found.');
+  }
+    
+  // Create the rectangle element
+  const rectangle = document.createElement('div');
+  rectangle.id = 'black-rectangle';
+  rectangle.style.position = 'fixed';
+  rectangle.style.top = '0';
+  rectangle.style.left = '0';
+  rectangle.style.width = '100vw';
+  rectangle.style.height = '100vh';
+  rectangle.style.backgroundColor = 'black';
+  rectangle.style.opacity = '1'; // Full visibility
+  rectangle.style.zIndex = '9999'; // On top of everything
+  rectangle.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
+  rectangle.style.filter = 'none';
+
+  document.body.appendChild(rectangle);
+}
+
+// Function to manipulate the opacity and blur of the rectangle
+function manipulateRectangle({ opacity = 1, blur = 0 }) {
+  const rectangle = document.getElementById('black-rectangle');
+  if (!rectangle) return;
+
+  rectangle.style.opacity = opacity; // Set the opacity
+  rectangle.style.filter = `blur(${blur}px)`; // Set the blur effect
+}
+
+// Function to hide/remove the rectangle
+function hideRectangle() {
+  console.log('Hiding the rectangle...');
+  const rectangle = document.getElementById('black-rectangle');
+  if (rectangle) {
+    rectangle.style.opacity = '0'; // Fade out
+
+    // Wait for the transition to complete, then remove the element
+    setTimeout(() => {
+      if (rectangle.parentElement) rectangle.parentElement.removeChild(rectangle);
+    }, 500);
+  }
+  else {
+    console.log('Rectangle not found.');
+  }
+}
 
 /**
  * Matrix-style random character effect for a single character.
@@ -104,6 +174,7 @@ function transformText() {
                 setTimeout(() => {
                 cursor.style.animation = 'blink 1s step-start infinite'; // Restart blinking
                 textElement.innerHTML = currentText + cursor.outerHTML;
+                hideRectangle(); // Hide the rectangle
                 }, 500); // Delay before final transformation
               }, 1300); // Delay before final transformation
             }, 800); // Delay after removing the final "e"
@@ -111,10 +182,10 @@ function transformText() {
         }, 500); // Delay after removing accent
       }, 600); // Delay after decapitalizing letters
     }, 300); // Initial delay before starting transformations
-  }, 3000); // 3-second interruption for cursor animation
+  }, 2000); // 3-second interruption for cursor animation
 }
 
-
+showRectangle();
   
 // Start the animation
 writeTextMatrixStyle();

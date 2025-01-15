@@ -16,14 +16,17 @@ body {
   padding: 10px 30px;
   box-sizing: border-box;
   width: 100%;
-  height: 60px; /* Adjust the height of the banner */
-  position: relative; /* For positioning child elements */
+  height: 60px;
+  /* Adjust the height of the banner */
+  position: relative;
+  /* For positioning child elements */
 }
 
 .banner-left {
   display: flex;
   align-items: center;
-  gap: 20px; /* Add space between the trigram and the time difference */
+  gap: 20px;
+  /* Add space between the trigram and the time difference */
 }
 
 .trigram {
@@ -37,15 +40,18 @@ body {
 
 .gray-box {
   background-color: #333;
-  padding: 5px 10px; /* Reduced padding to fit within the 60px height */
+  padding: 5px 10px;
+  /* Reduced padding to fit within the 60px height */
   border-radius: 8px;
-  height: 40px; /* Fixed height */
+  height: 40px;
+  /* Fixed height */
   color: white;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center the content */
+  justify-content: center;
+  /* Vertically center the content */
   gap: 5px;
 }
 
@@ -57,7 +63,8 @@ body {
 
 .label {
   font-weight: bold;
-  font-size: 0.9rem; /* Adjusted font size to fit */
+  font-size: 0.9rem;
+  /* Adjusted font size to fit */
 }
 
 .switch {
@@ -65,9 +72,12 @@ body {
   gap: 5px;
 }
 
-.red, .green {
-  width: 10px;  /* Adjusted size for dots */
-  height: 10px; /* Adjusted size for dots */
+.red,
+.green {
+  width: 10px;
+  /* Adjusted size for dots */
+  height: 10px;
+  /* Adjusted size for dots */
   border-radius: 50%;
 }
 
@@ -81,7 +91,8 @@ body {
 
 .value {
   color: #fffa;
-  font-size: 0.9rem; /* Adjusted font size for better fit */
+  font-size: 0.9rem;
+  /* Adjusted font size for better fit */
 }
 
 .banner-right {
@@ -100,44 +111,31 @@ body {
   text-decoration: underline;
 }
 
-/* Title adjustments to avoid overlap */
-.title h1 {
-  margin-top: 80px; /* Adjusted space for the title */
+/* Container for the title */
+.title {
+  max-width: 800px; /* Same as .terminal */
+  margin: 10px auto; /* Center horizontally and add top/bottom margins */
+  padding: 0; /* Ensure no extra padding */
+  text-align: left; /* Align text to the left */
 }
 
-
-/* Styling for the h1 text and individual spans */
+/* Styling for the h1 text */
 .title h1 {
-  position: absolute;
-  top: -5px;
-  left: 0px;
+  position: relative;
   font-size: 2.5rem;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
   color: #0f0; /* Matrix green color */
   font-family: monospace;
-  display: flex;
-}
-
-/* Styling for the h1 text and individual spans */
-.title h1 {
-  position: absolute;
-  top: -5px;
-  left: 0px;
-  font-size: 2.5rem;
-  margin: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: #0f0; /* Matrix green color */
-  font-family: monospace;
-  display: flex;
 }
 
+/* Styling for individual spans in the h1 */
 .title h1 span {
   transition: opacity 0.5s ease, transform 0.5s ease;
   display: inline-block;
 }
+
 /* Cursor style */
 .cursor {
   display: inline-block;
@@ -161,7 +159,7 @@ body {
 /* Main content (terminal-like) */
 .terminal {
   max-width: 800px;
-  margin: 80px auto;
+  margin: 10px auto;
   padding: 2rem;
   z-index: 1;
   position: relative;
@@ -173,7 +171,8 @@ h2 {
   margin-bottom: 1rem;
 }
 
-p, ul {
+p,
+ul {
   line-height: 1.6;
 }
 
@@ -222,17 +221,20 @@ a:hover {
 }
 
 .background-images .image:nth-child(1) {
-  background-image: url('assets/background1.jpg'); /* Replace with your image */
+  background-image: url('assets/background1.jpg');
+  /* Replace with your image */
   animation: scroll 20s linear infinite;
 }
 
 .background-images .image:nth-child(2) {
-  background-image: url('assets/background2.jpg'); /* Replace with your image */
+  background-image: url('assets/background2.jpg');
+  /* Replace with your image */
   animation: scroll 30s linear infinite;
 }
 
 .background-images .image:nth-child(3) {
-  background-image: url('assets/background3.jpg'); /* Replace with your image */
+  background-image: url('assets/background3.jpg');
+  /* Replace with your image */
   animation: scroll 40s linear infinite;
 }
 
@@ -241,130 +243,44 @@ a:hover {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-100%);
   }
 }
 
-/* forum styles */
-/* Forum section */
-.forum {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  position: relative;
-}
-
-.forum-container {
-  width: 640px;
-  height: 480px;
-  background-image: url('assets/window.png');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 4rem;
-}
-
-/* Forum header (top unused space in the image) */
-.forum-header {
-  height: 55px;
-  width: 100%;
-  /* Leave this empty for now; it's just the non-scrollable top part of the image */
-}
-
-/* Forum content (scrollable message area) */
-.forum-content {
-  width: 100%;
-  height: 400px;
-  overflow-y: auto;
-  padding: 10px;
-  box-sizing: border-box;
-  font-family: "Tahoma", sans-serif;
-  font-size: 14px;
-  color: black;
-  background-color: white; /* Matches Windows 2000 forum look */
-}
-
-/* Style individual messages */
-.message {
-  margin-bottom: 1rem;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #f0f0f0;
+/* Floating hint in the content */
+.terminal-hint {
+  display: inline-block;
+  background-color: #333;
+  color: #00ff00;
+  padding: 5px 10px;
+  font-family: 'Courier New', monospace;
   border-radius: 5px;
-  font-family: "Tahoma", sans-serif;
   font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-/* Username and time styles */
-.username {
-  font-weight: bold;
-  color: #000080; /* Dark blue for usernames */
-  margin: 0;
+/* Hover effect */
+.terminal-hint:hover {
+  opacity: 1;
+  background-color: #0f7b00;
 }
 
-.time {
+/* Tooltip */
+.terminal-hint-tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
   font-size: 12px;
-  color: #808080; /* Gray for time */
-  margin: 0;
+  border-radius: 3px;
+  z-index: 10;
 }
 
-.text {
-  margin: 5px 0 0;
-  color: #000; /* Black for text */
+.terminal-hint:hover .terminal-hint-tooltip {
+  display: block;
 }
-
-/* Custom scrollbar */
-.forum-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.forum-content::-webkit-scrollbar-thumb {
-  background: #00ff00; /* Matches Matrix green */
-  border-radius: 4px;
-}
-
-.forum-content::-webkit-scrollbar-track {
-  background: #000; /* Matches Matrix black */
-}
-
-
-
-
-
-    /* Floating hint in the content */
-    .terminal-hint {
-      display: inline-block;
-      background-color: #333;
-      color: #00ff00;
-      padding: 5px 10px;
-      font-family: 'Courier New', monospace;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    /* Hover effect */
-    .terminal-hint:hover {
-      opacity: 1;
-      background-color: #0f7b00;
-    }
-
-    /* Tooltip */
-    .terminal-hint-tooltip {
-      display: none;
-      position: absolute;
-      background-color: #333;
-      color: #fff;
-      padding: 5px;
-      font-size: 12px;
-      border-radius: 3px;
-      z-index: 10;
-    }
-
-    .terminal-hint:hover .terminal-hint-tooltip {
-      display: block;
-    }
