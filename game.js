@@ -139,7 +139,9 @@ inputField.addEventListener('keydown', function (e) {
     const prompt = 'root@plantincarrenard:~$ ';
 
     // Display the command typed by the user
-    outputDiv.innerHTML += `<div>${prompt}${inputField.value.trim()}</div>`;  // Show exactly what user typed
+    const echo = document.createElement('div');
+    echo.textContent = prompt + inputField.value.trim();  // Show exactly what user typed, never as HTML
+    outputDiv.appendChild(echo);
 
     // Check if the command is "joke" and respond
     if (userInput === 'joke') {

@@ -5,13 +5,16 @@ on:
     branches:
       - main  # Trigger this workflow only when there's a push to the 'main' branch
 
+permissions:
+  contents: write
+
 jobs:
   update_start_time_and_posts:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Check if trigram_daily_update is in commit message
       run: |
@@ -78,4 +81,4 @@ jobs:
 
     - name: Push changes to main
       run: |
-        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        git push origin HEAD:main

@@ -5,13 +5,16 @@ on:
     - cron: '0 0 * * *'  # Runs every day at midnight UTC
   workflow_dispatch:  # Allows manual trigger of the workflow
 
+permissions:
+  contents: write
+
 jobs:
   update_trigram:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set the trigram based on the day
       run: |
@@ -27,4 +30,4 @@ jobs:
         git config user.email "actions@github.com"
         git add index.html
         git commit -m "trigram_daily_update"
-        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        git push origin HEAD:main
